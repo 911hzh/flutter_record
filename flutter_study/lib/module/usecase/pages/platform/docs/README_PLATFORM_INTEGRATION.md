@@ -15,14 +15,14 @@
 
 **目录位置：**
 ```
-lib/examples/flutter_use_native/
-├── NativeTestPage.dart         # Flutter 页面
-├── NativeTestView.dart         # Platform View 桥接
+lib/module/usecase/pages/platform/flutter_use_native/
+├── IOSNativeComponentDemoPage.dart         # Flutter 页面
+├── IOSNativeUIKitView.dart         # Platform View 桥接
 └── README.md                   # 详细说明
 
-ios/Runner/platform-views/
-├── NativeTestView.swift        # 原生视图实现
-└── NativeTestViewFactory.swift # 工厂和注册
+ios/Runner/EmbedNativeInFlutter/
+├── IOSNativeView.swift        # 原生视图实现
+└── IOSNativeViewFactory.swift # 工厂和注册
 ```
 
 **使用场景：**
@@ -40,9 +40,9 @@ ios/Runner/platform-views/
 
 **目录位置：**
 ```
-ios/Runner/flutter-engines/
-└── FlutterWidgetVC.swift       # Flutter 视图控制器
-    └── README.md               # 详细说明
+ios/Runner/EmbedFlutterInNative/
+├── FlutterWidgetVC.swift       # Flutter 视图控制器
+└── README.md                   # 详细说明
 ```
 
 **使用场景：**
@@ -117,16 +117,16 @@ Flutter 使用原生          ←→          原生使用 Flutter
 ══════════════════                   ══════════════════
 
 Flutter 端：                         iOS 端：
-lib/examples/                        ios/Runner/
-  flutter_use_native/                  flutter-engines/
-    ├── NativeTestPage.dart              └── FlutterWidgetVC.swift
-    └── NativeTestView.dart
+lib/module/usecase/pages/platform/                        ios/Runner/
+  flutter_use_native/                  EmbedFlutterInNative/
+    ├── IOSNativeComponentDemoPage.dart              └── FlutterWidgetVC.swift
+    └── IOSNativeUIKitView.dart
                                      Flutter 端：
-iOS 端：                              需要在 RouterConfig.dart
+iOS 端：                              需要在 RouteConfig.dart
 ios/Runner/                          中配置对应的路由
-  platform-views/
-    ├── NativeTestView.swift
-    └── NativeTestViewFactory.swift
+  EmbedNativeInFlutter/
+    ├── IOSNativeView.swift
+    └── IOSNativeViewFactory.swift
 
 注册位置：                            使用位置：
 AppDelegate.swift                    任何 iOS 原生代码
@@ -138,15 +138,15 @@ AppDelegate.swift                    任何 iOS 原生代码
 
 ### 添加新的原生组件
 
-1. 在 `lib/examples/flutter_use_native/` 创建 Flutter 桥接
-2. 在 `ios/Runner/platform-views/` 创建原生实现
+1. 在 `lib/module/usecase/pages/platform/flutter_use_native/` 创建 Flutter 桥接
+2. 在 `ios/Runner/EmbedNativeInFlutter/` 创建原生实现
 3. 在 `AppDelegate.swift` 注册
-4. 在 `RouterConfig.dart` 添加路由
+4. 在 `RouteConfig.dart` 添加路由
 
 ### 添加新的 Flutter 页面供原生使用
 
 1. 在 Flutter 中创建页面
-2. 在 `RouterConfig.dart` 添加路由
+2. 在 `RouteConfig.dart` 添加路由
 3. 在 iOS 代码中使用：
    ```swift
    let vc = FlutterWidgetVC(route: "/your_route")
@@ -160,8 +160,8 @@ AppDelegate.swift                    任何 iOS 原生代码
 ### 命名规范
 
 - **Platform View ID：** 下划线命名 `native_test_view`
-- **Swift 类名：** 大驼峰命名 `NativeTestView`
-- **Dart 文件名：** 大驼峰命名 `NativeTestPage.dart`
+- **Swift 类名：** 大驼峰命名 `IOSNativeView`
+- **Dart 文件名：** 大驼峰命名 `IOSNativeComponentDemoPage.dart`
 
 ### 日志规范
 
@@ -209,7 +209,7 @@ AppDelegate.swift                    任何 iOS 原生代码
 | 问题 | 可能原因 | 解决方案 |
 |-----|---------|---------|
 | 原生视图不显示 | viewType 不一致 | 检查 Flutter 和 iOS 端的标识符 |
-| 白屏 | 路由未配置 | 在 RouterConfig.dart 添加路由 |
+| 白屏 | 路由未配置 | 在 RouteConfig.dart 添加路由 |
 | 内存泄漏 | 强引用 VC | 使用局部变量或 weak 引用 |
 | 启动慢 | 未使用 Group | 使用 FlutterEngineGroup |
 

@@ -1,12 +1,14 @@
 # api 目录说明
 
-`api` 用于放置当前 example 工程的网络 API 示例代码，主要展示 `flutter_foundation_kit` 中 `RestClient`、`RestClientAdapter`、`NetworkProxy` 等网络能力的接入方式。
+`api` 用于放置学习工程的网络 API 和适配器代码，包含 `flutter_foundation_kit` 中 `RestClient`、`RestClientAdapter`、`NetworkProxy` 等接入示例。
 
 ## 当前内容
 
-- `ApiClient.dart`：聚合示例 API，并提供 demo 环境的 `RestClientAdapter`、`NetworkProxy` 实现。
-- `UserApi.dart`：演示如何通过 `RestClient` 发起请求并转换模型，同时包含 demo 登录返回结构。
-- `model/`：网络返回模型目录，例如 `User.dart`。
+- [`Api.dart`](Api.dart)、[`LoginApi.dart`](LoginApi.dart) 使用本地 `packages/api_module` 提供旧版 API 和登录示例。
+- [`AppApiClient.dart`](AppApiClient.dart) 和 [`UserApi.dart`](UserApi.dart) 提供 Foundation Kit 的 API 接入示例。
+- [`AppRestClientAdapter.dart`](AppRestClientAdapter.dart) 和 [`AppNetworkProxy.dart`](AppNetworkProxy.dart) 分别提供 REST 适配和网络代理。
+- `model/` 包含 [`User.dart`](model/User.dart) 和 [`LoginResponse.dart`](model/LoginResponse.dart)。
+
 
 ## 和 port 的区别
 

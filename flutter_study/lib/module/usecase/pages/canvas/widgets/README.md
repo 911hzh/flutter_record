@@ -1,10 +1,6 @@
-# Canvas 自定义绘制
+# Canvas Painter 与绘制组件
 
-入口：/canvas_page、/practical_examples。
-
-遍历绘制子示例，检查图表、渐变文字、涟漪和签名操作。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+绘制组件由 [Canvas 页面](../README.md) 组合使用，入口为 `/canvas_page` 和 `/practical_examples`。
 
 ## 代码
 

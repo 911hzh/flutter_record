@@ -2,6 +2,12 @@
 
 `infra` 是基础设施实现层，用于放置 `lib/base/port` 中接口的具体实现。这里可以依赖第三方 SDK、平台通道、系统服务或远端服务，但对上层模块暴露时应通过 Port 接口完成。
 
+## 当前内容
+
+- `localization/` 读取随包的 JSON 译文并实现 `LocalizationProtocol`。
+- `platform/channel/` 包含 Flutter 平台消息通道的管理代码。
+- `platform/pigeons/` 放 Pigeon schema，`platform/zHNativeChannel/` 放消息、处理器和生成的注册代码。
+
 ## 适合放置的内容
 
 - Analytics Port 的具体 SDK 实现。

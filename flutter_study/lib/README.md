@@ -1,6 +1,6 @@
 # lib 目录说明
 
-`lib` 是 example 工程的应用入口和示例代码目录，用于展示 `flutter_foundation_kit` 在 Flutter 应用中的接入方式。这里的代码按职责分层：模块页面放在 `module/usecase`，接口抽象放在 `base/port`，实现放在 `infra`，依赖注册放在 `module/getIt`，路由放在 `module/route`，公共 UI 放在 `e_uikit`。
+`lib` 是 `flutter_study` 的应用入口和学习示例目录。这里的代码按职责分层：模块页面按主题放在 `module/usecase/pages`，接口抽象放在 `base/port`，实现放在 `infra`，依赖注册放在 `module/getIt`，路由放在 `module/route`，公共 UI 放在 `e_uikit`。
 
 ## 外层目录职责
 

@@ -1,10 +1,6 @@
-# 平台互操作
+# Pigeon 演示页面
 
-入口：/native_test_page、/native_use_flutter_page、/pigeon_demo、/zh_native_channel_demo。
-
-在各自支持的平台验证原生视图、嵌入、Pigeon 和 Native Channel。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+入口为 `/pigeon_demo`。页面通过 `PigeonDemoBloc` 模拟加载和结果展示。Pigeon schema 在 `lib/infra/platform/pigeons`，iOS Host 实现在 `ios/Runner/Pigeons`。
 
 ## 代码
 

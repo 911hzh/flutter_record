@@ -2,6 +2,8 @@
 
 `port` 是接口抽象层，用于定义业务侧希望使用的能力边界。这里通常只放抽象接口、入参出参模型或少量与接口契约直接相关的类型，不放第三方 SDK 的具体调用代码。
 
+目前这里定义了 [LocalizationProtocol](localization/LocalizationProtocol.dart)，由 JSON 本地化实现提供按 key 和 locale 查询译文的能力。
+
 ## 适合放置的内容
 
 - Analytics 相关接口，例如事件上报、用户属性设置、页面曝光统计。
