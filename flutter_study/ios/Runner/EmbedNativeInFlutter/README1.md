@@ -29,7 +29,7 @@
 
 ## 🔗 对应的 Flutter 文件
 
-Flutter 端实现位于：`lib/module/platform/flutter_use_native/`
+Flutter 端实现位于：`lib/module/usecase/pages/platform/flutter_use_native/`
 - **IOSNativeUIKitView.dart** - Platform View 桥接组件
 - **IOSNativeComponentDemoPage.dart** - 演示页面
 

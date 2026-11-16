@@ -4,8 +4,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_study/testPage/localizaition/LocalizationPage.dart';
-import 'package:flutter_study/testPage/localizaition/LocalizationNotifier.dart';
+import 'package:flutter_study/module/usecase/pages/localization/LocalizationPage.dart';
+import 'package:flutter_study/e_uikit/localization/LocalizationNotifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 

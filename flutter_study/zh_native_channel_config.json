@@ -1,8 +1,25 @@
 {
-  "dart": {},
+  "dart": {
+    "defaultOutputDirectory": "lib/infra/platform/zHNativeChannel",
+    "messageScanPath": [
+      "lib/infra/platform/zHNativeChannel/msgs"
+    ],
+    "handlerScanPath": [
+      "lib/infra/platform/zHNativeChannel/handlers"
+    ],
+    "generatedChannelRegisterOutputPath": "lib/infra/platform/zHNativeChannel/ChannelGeneratedRegister.g.dart"
+  },
   "platforms": {
     "ios": {},
-    "android": {},
+    "android": {
+      "defaultOutputDirectory": "android/app/src/main/kotlin/com/example/flutter_study/zHNativeChannel",
+      "scanHandlerPath": [
+        "android/app/src/main/kotlin/com/example/flutter_study/zHNativeChannel/handlers"
+      ],
+      "msgsOutputPath": "android/app/src/main/kotlin/com/example/flutter_study/zHNativeChannel/msgs",
+      "generatedChannelRegistrationsOutputPath": "android/app/src/main/kotlin/com/example/flutter_study/zHNativeChannel",
+      "packageName": "com.example.flutter_study.zHNativeChannel"
+    },
     "web": {}
   }
 }

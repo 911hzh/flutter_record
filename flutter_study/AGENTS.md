@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## 项目结构与模块组织
-这是一个 Flutter 应用仓库，入口在 `lib/main.dart`。主要业务代码位于 `lib/`：`lib/base/` 放基础能力与依赖注入，`lib/module/` 放功能模块，`lib/testPage/` 是各类实验页与示例页面，路由配置在 `lib/config/RouterConfig.dart`。资源文件已在 `pubspec.yaml` 中声明为 `lib/assets/`。测试位于 `test/`，当前包含接口测试和基础 widget 测试。`packages/api_module/` 是本地 package 依赖，修改主工程接口封装时通常需要一起检查。
+这是一个 Flutter 应用仓库，入口在 `lib/main.dart`。主要业务代码位于 `lib/`：`lib/base/` 放共享接口、API 和状态，`lib/infra/` 放具体实现，`lib/module/getIt/` 放依赖注入，`lib/module/usecase/pages/` 按主题放实验和示例页面，路由配置在 `lib/module/route/RouteConfig.dart`。资源文件已在 `pubspec.yaml` 中声明为 `lib/assets/`。测试位于 `test/`，当前包含接口测试和基础 widget 测试。`packages/api_module/` 是本地 package 依赖，修改主工程接口封装时通常需要一起检查。
 
 ## 构建、测试与开发命令
 优先使用仓库根目录 `Makefile`：

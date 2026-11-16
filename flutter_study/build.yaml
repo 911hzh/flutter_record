@@ -5,6 +5,7 @@ targets:
         enabled: true
         options:
           scan_globs:
-            - lib/**.dart
-          basePath: lib/base/zHNativeChannel
+            - lib/infra/platform/zHNativeChannel/msgs/**.dart
+            - lib/infra/platform/zHNativeChannel/handlers/**.dart
+          basePath: lib/infra/platform/zHNativeChannel
           register_path: ChannelGeneratedRegister.g.dart

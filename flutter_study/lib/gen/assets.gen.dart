@@ -16,6 +16,9 @@ class $LibGen {
 
   /// Directory path: lib/assets
   $LibAssetsGen get assets => const $LibAssetsGen();
+
+  /// Directory path: lib/base
+  $LibBaseGen get base => const $LibBaseGen();
 }
 
 class $LibAssetsGen {
@@ -33,6 +36,10 @@ class $LibAssetsGen {
   AssetGenImage get focusItemSubFolder =>
       const AssetGenImage('lib/assets/focus_item_sub_folder.png');
 
+  /// Directory path: lib/assets/localization
+  $LibAssetsLocalizationGen get localization =>
+      const $LibAssetsLocalizationGen();
+
   /// File path: lib/assets/mindspace_bg.png
   AssetGenImage get mindspaceBg =>
       const AssetGenImage('lib/assets/mindspace_bg.png');
@@ -44,6 +51,46 @@ class $LibAssetsGen {
     focusItemSubFolder,
     mindspaceBg,
   ];
+}
+
+class $LibBaseGen {
+  const $LibBaseGen();
+
+  /// Directory path: lib/base/store
+  $LibBaseStoreGen get store => const $LibBaseStoreGen();
+}
+
+class $LibAssetsLocalizationGen {
+  const $LibAssetsLocalizationGen();
+
+  /// File path: lib/assets/localization/en.json
+  String get en => 'lib/assets/localization/en.json';
+
+  /// File path: lib/assets/localization/zh.json
+  String get zh => 'lib/assets/localization/zh.json';
+
+  /// List of all assets
+  List<String> get values => [en, zh];
+}
+
+class $LibBaseStoreGen {
+  const $LibBaseStoreGen();
+
+  /// Directory path: lib/base/store/settings
+  $LibBaseStoreSettingsGen get settings => const $LibBaseStoreSettingsGen();
+}
+
+class $LibBaseStoreSettingsGen {
+  const $LibBaseStoreSettingsGen();
+
+  /// File path: lib/base/store/settings/development.json
+  String get development => 'lib/base/store/settings/development.json';
+
+  /// File path: lib/base/store/settings/release.json
+  String get release => 'lib/base/store/settings/release.json';
+
+  /// List of all assets
+  List<String> get values => [development, release];
 }
 
 class Assets {

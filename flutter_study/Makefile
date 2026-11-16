@@ -27,12 +27,6 @@ help:
 	@echo "  make coverage-open   - 生成覆盖率报告并在浏览器打开"
 	@echo "  make coverage-check  - CI 覆盖率检查 (可设置 THRESHOLD=80)"
 
-# 运行代码生成器
-gen:
-	@echo "🚀 运行代码生成器..."
-	$(MAKE) build-runner-build
-	$(MAKE) create-platformcode-all
-
 # 从 ARB 生成 Dart 本地化代码
 gen-l10n:
 	flutter gen-l10n
@@ -171,72 +165,3 @@ create-platformcode-android:
 create-platformcode-web:
 	$(ZH_NATIVE_CHANNEL_GENERATOR) $(ZH_NATIVE_CHANNEL_CONFIG) --platform web
 # <<< zh_native_channel_generator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

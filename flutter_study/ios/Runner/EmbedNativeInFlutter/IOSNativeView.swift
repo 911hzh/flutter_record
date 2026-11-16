@@ -9,7 +9,7 @@ import Flutter
 /// Flutter 会调用 view() 方法获取要显示的 UIView
 /// 
 /// 对应的 Flutter 端组件：
-/// - lib/module/platform/flutter_use_native/IOSNativeUIKitView.dart
+/// - lib/module/usecase/pages/platform/flutter_use_native/IOSNativeUIKitView.dart
 class IOSNativeView: NSObject, FlutterPlatformView {
     private var _view: CustomNativeView
     
