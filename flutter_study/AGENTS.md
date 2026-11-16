@@ -161,7 +161,11 @@ lib/e_uikit/loading/
 遵循 `analysis_options.yaml` 中的 `flutter_lints`。统一使用 2 空格缩进，并先运行 `dart format lib test`。项目现有 Dart 文件大量使用大驼峰文件名，例如 `HomePage.dart`、`LoginApi.dart`；新增文件请优先跟随所在目录的既有风格，不要混用命名方案。生成文件如 `*.g.dart`、`*.config.dart`、`lib/gen/assets.gen.dart` 不要手动编辑。
 
 ## 测试规范
-测试文件放在 `test/`，命名使用 `*_test.dart`，例如 `test/base/api/login_api_test.dart`。新增逻辑优先补最小可验证测试；UI 改动至少确保现有 `widget_test.dart` 能通过。提交前至少运行与改动相关的测试，无法验证时在 PR 说明里写明原因与风险。
+
+- 单元测试和 Widget 测试在 `test/` 下镜像 `lib/` 的相对路径。将对应源码的主文件名转换为小写下划线命名（`snake_case`），再加 `_test.dart`，以便 Flutter 自动发现测试。
+- 例如 `lib/base/api/LoginApi.dart` 对应 `test/base/api/login_api_test.dart`，`lib/module/usecase/pages/localization/LocalizationPage.dart` 对应 `test/module/usecase/pages/localization/localization_page_test.dart`。
+- 整应用启动测试对应 `test/main_test.dart`，全局路由测试对应 `test/module/route/route_config_test.dart`。需要真实设备或模拟器的测试放在 `integration_test/`，采用同样的目录和命名规则。
+- 新增逻辑优先补最小可验证测试。UI 改动至少确保现有 `main_test.dart` 能通过。提交前运行与改动相关的测试，无法验证时在 PR 说明里写明原因与风险。
 
 ## 提交与 PR 规范
 现有提交历史以简短中文说明为主，如 `初始化agents.md文件`、`read me 修改`，也存在少量英文初始化/合并提交。继续使用“动词 + 变更点”的短提交信息，聚焦单一主题。PR 需要写清变更目的、影响范围、验证命令；涉及 UI、路由或平台交互时，附截图或录屏，并标明是否执行过 `make gen`、`make analyze`、`make test`。
