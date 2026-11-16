@@ -4,8 +4,8 @@
 
 ## 当前内容
 
-- `RouteConfig.dart`：集中维护路由路径和页面 WidgetBuilder 的映射。
-- `GlobalNavigatorKey.dart`：提供全局导航 key 和辅助导航能力。
+- `RouteConfig.dart`：集中维护路由路径和页面 WidgetBuilder 的映射，学习首页路径为 `/homePage`。
+- `GlobalNavigatorKey.dart`：定义 `globalNavigatorKey`。
 
 ## 使用约定
 

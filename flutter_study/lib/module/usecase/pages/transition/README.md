@@ -10,7 +10,10 @@ transition/
 │   ├── CustomBackGestureController.dart      # 手势控制器
 │   ├── CustomBackGesturePageRoute.dart       # 自定义路由
 │   └── CustomBackWrapperView.dart            # 手势识别视图
-└── page/                           # Demo示例
+├── custom/                        # PageA–PageD 与独立动画实验
+├── docs/                          # 转场教程
+└── page/                          # MindSpace 示例
+    ├── MindSpaceHomePagetest.dart          # 演示入口
     ├── MindSpaceHomePage.dart               # 首页（列表）
     ├── MindSpaceFocusDetailPage.dart        # 详情页
     └── FocusItemView.dart                   # 卡片组件
@@ -21,7 +24,7 @@ transition/
 ### 基础用法
 
 ```dart
-import 'package:flutter_study/module/transition/CustomBackGestureTransition/CustomBackGesturePageRoute.dart';
+import 'package:flutter_study/module/usecase/pages/transition/CustomBackGestureTransition/CustomBackGesturePageRoute.dart';
 
 // 最简单的使用方式
 void navigateToDetail(BuildContext context) {
@@ -45,7 +48,7 @@ flutter run -d iPhone
 flutter run
 ```
 
-然后在应用中找到并打开 `MindSpaceHomePage` 即可看到完整的转场效果。
+首页的 [Mindspace Home](page/README.md) 走 `/mindspace_home_page`，[Transition Home](custom/HTPageJump/README.md) 走 `/transition_home_page`。
 
 ## ✨ 核心特性
 
@@ -126,7 +129,7 @@ Demo示例使用了 `flutter_hooks`，如果你要运行Demo，请添加：
 
 ```yaml
 dependencies:
-  flutter_hooks: ^0.20.0
+  flutter_hooks: ^0.21.2
 ```
 
 ## 🤝 贡献

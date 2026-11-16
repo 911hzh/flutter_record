@@ -49,7 +49,7 @@ navigationController?.pushViewController(flutterVC, animated: true)
 ### 2. Modal 展示
 
 ```swift
-let flutterVC = FlutterWidgetVC(route: "/home")
+let flutterVC = FlutterWidgetVC(route: "/homePage")
 flutterVC.modalPresentationStyle = .fullScreen
 present(flutterVC, animated: true)
 ```
@@ -57,7 +57,7 @@ present(flutterVC, animated: true)
 ### 3. 嵌入容器
 
 ```swift
-let flutterVC = FlutterWidgetVC(route: "/settings")
+let flutterVC = FlutterWidgetVC(route: "/native_use_flutter_page")
 addChild(flutterVC)
 containerView.addSubview(flutterVC.view)
 flutterVC.view.frame = containerView.bounds
@@ -73,7 +73,7 @@ flutterVC.didMove(toParent: self)
 
 ## 🔗 对应的 Flutter 配置
 
-在 `lib/config/RouterConfig.dart` 中配置路由：
+在 [`lib/module/route/RouteConfig.dart`](../../../lib/module/route/RouteConfig.dart) 中配置路由：
 
 ```dart
 GoRoute(

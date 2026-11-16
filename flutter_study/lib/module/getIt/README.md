@@ -1,6 +1,6 @@
 # getIt 目录说明
 
-`getIt` 用于维护依赖注入配置，集中注册 example 工程运行时需要的对象。当前工程结合 `get_it` 和 `injectable` 使用，既包含自动生成的注册代码，也包含手写的 module 注册。
+`getIt` 用于维护依赖注入配置，集中注册 `flutter_study` 运行时需要的对象。当前工程结合 `get_it` 和 `injectable` 使用，既包含自动生成的注册代码，也包含手写的 module 注册。
 
 ## 当前内容
 

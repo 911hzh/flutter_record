@@ -16,13 +16,13 @@ flutter run
 在专用 iOS 或 Android 模拟器上运行 Native Channel 消息往返测试：
 
 ```bash
-flutter test -d <device-id> integration_test/native_channel_test.dart
+flutter test -d <device-id> integration_test/module/usecase/pages/platform/native_channel/zh_native_channel_demo_page_test.dart
 ```
 
 iOS 的 UIKit Platform View 和重叠手势页入口另有测试：
 
 ```bash
-flutter test -d <ios-device-id> integration_test/ios_platform_view_test.dart
+flutter test -d <ios-device-id> integration_test/module/usecase/pages/platform/flutter_use_native/ios_native_component_demo_page_test.dart
 ```
 
 ## 工程结构

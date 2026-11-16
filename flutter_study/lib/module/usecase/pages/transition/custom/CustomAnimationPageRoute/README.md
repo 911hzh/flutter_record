@@ -1,10 +1,6 @@
-# 转场与手势返回
+# 自定义动画与手势路由实验
 
-入口：/transition_home_page、/mindspace_home_page。
-
-打开详情，测试普通返回、拖动取消和完成返回。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+目录内是平移、旋转、自定义基类和手势返回的独立实现，供路由实验使用。实际 `/transition_home_page` 入口见 [HTPageJump](../HTPageJump/README.md)。
 
 ## 代码
 

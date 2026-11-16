@@ -1,10 +1,6 @@
-# 转场与手势返回
+# MindSpace 手势返回组件
 
-入口：/transition_home_page、/mindspace_home_page。
-
-打开详情，测试普通返回、拖动取消和完成返回。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+控制器、路由和手势视图由 [MindSpace 示例](../page/README.md) 使用，通过 `/mindspace_home_page` 进入演示。
 
 ## 代码
 
