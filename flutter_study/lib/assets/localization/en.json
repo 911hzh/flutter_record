@@ -1,0 +1,9 @@
+{
+  "localization.title": "Localization Page",
+  "localization.language": "Language",
+  "localization.chinese": "Simplified Chinese",
+  "localization.english": "English",
+  "localization.builder": "Translate directly in Builder",
+  "localization.contextTr": "Translate with context.tr()",
+  "localization.greeting": "Hello, welcome to the localization demo!"
+}

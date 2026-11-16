@@ -1,0 +1,8 @@
+{
+  "packageName": "flutter_study",
+  "environment": "production",
+  "baseUrl": "https://api.example.com",
+  "languageCode": "en",
+  "enableMock": false,
+  "enableNetworkLog": false
+}

@@ -1,0 +1,10 @@
+name: api_module
+description: API 网络请求模块
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  dio: ^5.9.0

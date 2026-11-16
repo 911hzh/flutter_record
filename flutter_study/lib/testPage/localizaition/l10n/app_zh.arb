@@ -1,0 +1,12 @@
+{
+  "@@locale": "zh",
+  "localizationTitle": "国际化页面",
+  "localizationGreeting": "你好，欢迎使用国际化示例！",
+  "localizationLanguage": "语言",
+  "localizationChinese": "简体中文",
+  "localizationEnglish": "英语",
+  "localizationArb": "ARB 编译方案",
+  "localizationJson": "本地 JSON 方案",
+  "localizationLoading": "正在加载本地 JSON 译文…",
+  "localizationLoadError": "无法加载本地 JSON 译文"
+}

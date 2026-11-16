@@ -1,0 +1,12 @@
+{
+  "@@locale": "en",
+  "localizationTitle": "Localization Page",
+  "localizationGreeting": "Hello, welcome to the localization demo!",
+  "localizationLanguage": "Language",
+  "localizationChinese": "Simplified Chinese",
+  "localizationEnglish": "English",
+  "localizationArb": "Compiled ARB",
+  "localizationJson": "Bundled JSON",
+  "localizationLoading": "Loading local JSON translations…",
+  "localizationLoadError": "Could not load local JSON translations."
+}

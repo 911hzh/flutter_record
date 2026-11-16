@@ -1,0 +1,19 @@
+---
+description: flutter_foundation_kit example demo 页面创建规则
+globs: packages/flutter_foundation_kit/example/lib/**/*.dart
+alwaysApply: false
+---
+
+# Foundation Kit Example Demo 规则
+
+`packages/flutter_foundation_kit/example` 用于展示 `flutter_foundation_kit` 的 demo 使用方式。
+
+新增或调整 demo page 时遵守以下约定：
+
+- 页面统一放在 `lib/pages/xx/` 目录下，`xx` 表示不同 demo 页面主题，例如 `lib/pages/toast/`。
+- 一个 demo 主题只创建一个 `Page` 页面，页面文件名使用大驼峰并以 `Page.dart` 结尾，例如 `ToastPage.dart`。
+- demo 页面只用于展示如何使用 `flutter_foundation_kit`，优先使用最简单、最直接的调用方式，不引入额外复杂封装。
+- 新建页面后，需要把入口添加到 `lib/pages/home/HomePageVM.dart` 的 `list` 中。
+- 新创建的 demo 入口必须放到 `HomePageVM.dart` 的 `list` 第一条。
+- `HomePageVM.dart` 中的 `title` 用于首页列表展示，`route` 必须与项目路由配置保持一致。
+- 如果新页面需要路由访问，同步更新项目现有路由配置，保证首页点击可以进入对应 demo。

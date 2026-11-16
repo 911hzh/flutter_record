@@ -1,0 +1,18 @@
+---
+description: Flutter Study page 新增与业务结构约定
+alwaysApply: true
+---
+
+# Flutter Study Page 规则
+
+在本项目新增或调整 page 时，遵守以下约定：
+
+- 文件夹使用小驼峰命名，例如 `pigeonPage`、`listItemPage`。
+- 文件名使用大驼峰命名，并以 `Page.dart` 结尾，例如 `PigeonDemoPage.dart`。
+- 每个大类 page 需要在 `lib/testPage/` 下创建对应的小驼峰 `xxPage/` 目录，例如 Pigeon 相关页面放到 `lib/testPage/pigeonPage/`。
+- 大类目录内可以包含入口 page、子 page、bloc/cubit、局部 widget 等相关文件；相关子类页面不要散落在 `lib/testPage/` 根目录。
+- 新增 page 默认放到对应大类目录；没有合适大类时，先创建语义清晰的小驼峰 `xxPage/` 目录。
+- 新增可从首页进入的 page 时，需要在 `lib/config/RouterConfig.dart` 中添加 import 和 `GoRoute`。
+- 新增 page 的首页入口需要添加到 `lib/testPage/HomePage.dart` 的 `datas` 列表，`path` 必须与路由保持一致。
+- 业务实现采用 UI 与 bloc 分离的模式：Page 只负责布局、交互入口和状态展示，业务状态、事件处理、异步调用放到对应 bloc/cubit 或同职责的业务层。
+- 新增页面时优先参考 `lib/testPage/` 下已有页面风格，保持命名、路由、首页入口和组件拆分方式一致。

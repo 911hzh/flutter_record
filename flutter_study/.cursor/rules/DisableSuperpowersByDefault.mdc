@@ -1,0 +1,10 @@
+---
+description: 默认不使用 Superpowers skills
+alwaysApply: true
+---
+
+# 默认不使用 Superpowers
+
+- 默认按普通 Cursor Agent 流程执行任务。
+- 不要主动调用或套用 Superpowers skills、commands、hooks 工作流。
+- 只有当用户明确要求使用 Superpowers、某个 Superpowers skill，或明确要求使用 brainstorming/TDD/review 等 Superpowers 工作流时，才启用对应能力。

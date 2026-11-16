@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_study/page/Animate/AnimatePage.dart';
+import 'package:flutter_study/page/Animate/AnimateScalePage.dart';
+import 'package:flutter_study/page/BaseComponentPage.dart';
+import 'package:flutter_study/page/CustomTransition/HTPageJump/TransitionHomePage.dart';
+import 'package:flutter_study/page/ExpandedView.dart';
+import 'package:flutter_study/page/HomePage.dart';
+import 'package:flutter_study/page/KeyPage/BlocBuilderPage.dart';
+import 'package:flutter_study/page/KeyPage/KeyPage.dart';
+import 'package:flutter_study/page/SeparatorPage.dart';
+import 'package:flutter_study/page/TabPage/TabPage.dart';
+import 'package:flutter_study/page/mindspaceTransition/MindSpaceHomePage.dart';
+import 'package:flutter_study/page/mindspaceTransition/MindSpaceHomePagetest.dart';
+import 'package:go_router/go_router.dart';
+
+GoRouter getRouter() {
+  return GoRouter(
+    initialLocation: "/mindspace_home_page",
+    routes: [
+      GoRoute(
+        path: "/base_component",
+        builder: (context, state) {
+          return BaseComponentPage();
+        },
+      ),
+      GoRoute(
+        path: "/separator_page",
+        builder: (context, state) {
+          return SeparatorPage();
+        },
+      ),
+      GoRoute(
+        path: "/homePage",
+        builder: (context, state) {
+          return HomePage();
+        },
+      ),
+      GoRoute(
+        path: "/key_page",
+        builder: (context, state) {
+          return KeyPage();
+        },
+      ),
+      GoRoute(
+        path: "/bloc",
+        builder: (context, state) {
+          return BlocBuilderPage();
+        },
+      ),
+      GoRoute(
+        path: "/animate",
+        builder: (context, state) {
+          return AnimatePage();
+        },
+      ),
+      GoRoute(
+        path: "/expanded",
+        builder: (context, state) {
+          return ExpandedView();
+        },
+      ),
+      GoRoute(
+        path: "/tab",
+        builder: (context, state) {
+          return TabPage();
+        },
+      ),
+      GoRoute(
+        path: "/animate_scale",
+        builder: (context, state) {
+          return AnimateScalePage();
+        },
+      ),
+      GoRoute(
+        path: "/transition_home_page",
+        builder: (context, state) {
+          return TransitionHomePage();
+        },
+      ),
+      GoRoute(
+        path: "/mindspace_home_page",
+        builder: (context, state) {
+          return MindSpaceHomePagetest();
+        },
+      ),
+    ],
+  );
+}
