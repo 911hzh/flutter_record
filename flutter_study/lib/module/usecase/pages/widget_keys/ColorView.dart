@@ -1,29 +1,37 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import "package:flutter/src/widgets/framework.dart";
-import 'package:flutter_study/module/usecase/pages/widget_keys/KeyPage.dart';
-import "package:flutter_hooks/flutter_hooks.dart";
 
-class ColorStateLessView extends HookWidget {
-  final Color color;
+class ColorStateFullView extends StatefulWidget {
+  const ColorStateFullView({super.key, required this.id});
 
-  const ColorStateLessView({Key? key, required this.color}) : super(key: key);
+  final int id;
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Container(color: color, child: Padding(padding: EdgeInsets.all(70.0), key: ObjectKey([1, 2])));
-  }
+  State<ColorStateFullView> createState() => _ColorStateFullViewState();
 }
 
-class ColorStateFullView extends HookWidget {
-  const ColorStateFullView({Key? key}) : super(key: key);
+class _ColorStateFullViewState extends State<ColorStateFullView> {
+  static const _colors = [Colors.red, Colors.blue, Colors.teal, Colors.purple];
+  late final Color _color;
+  int _taps = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _color = _colors[widget.id % _colors.length];
+  }
 
   @override
   Widget build(BuildContext context) {
-    var myColor = useState(UniqueColorGenerator.getColor());
-    // TODO: implement build
-    return Container(color: myColor.value, child: const Padding(padding: EdgeInsets.all(70.0)));
+    final label = switch (widget.id) {
+      0 => 'A',
+      1 => 'B',
+      _ => '#${widget.id + 1}',
+    };
+
+    return OutlinedButton.icon(
+      onPressed: () => setState(() => _taps++),
+      icon: Icon(Icons.circle, color: _color),
+      label: Text('$label · $_taps 次'),
+    );
   }
 }

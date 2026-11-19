@@ -10,16 +10,19 @@ void main() {
     '/dart_related',
     '/inherited_widget_index',
     '/provider',
+    '/riverprovider',
+    '/storage',
     '/navigator_demo',
     '/base_component',
     '/separator_page',
     '/homePage',
     '/key_page',
     '/bloc',
+    '/isolate',
     '/animate',
     '/expanded',
     '/tab',
-    '/animate_scale',
+    '/repaintboundary',
     '/transition_home_page',
     '/mindspace_home_page',
     '/canvas_page',
@@ -36,29 +39,36 @@ void main() {
     '/localization': 'Flutter Localization',
     '/list_item_page': 'List Item Page',
     '/hitest_page': 'Hitest Page',
-    '/dart_related': 'Dart 相关',
-    '/provider': 'Provider 测试',
-    '/navigator_demo': 'Navigator 2.0 示例',
-    '/inherited_widget_index': 'InheritedWidget 数据共享',
-    '/native_test_page': 'iOS 原生组件',
+    '/dart_related': 'Dart Basics',
+    '/provider': 'Provider Demo',
+    '/riverprovider': 'Riverpod Basics',
+    '/storage': 'Local Storage',
+    '/navigator_demo': 'Navigator 2.0 Demo',
+    '/inherited_widget_index': 'InheritedWidget Demo',
+    '/native_test_page': 'iOS Native Components',
     '/zh_native_channel_demo': 'ZHNativeChannel Demo',
     '/pigeon_demo': 'Pigeon Demo',
     '/canvas_page': 'Canvas Page',
-    '/practical_examples': 'Canvas 实用案例',
+    '/practical_examples': 'Canvas Examples',
     '/mindspace_home_page': 'Mindspace Home',
     '/transition_home_page': 'Transition Home',
     '/base_component': 'Base Component',
     '/separator_page': 'Separator Page',
     '/key_page': 'Key Page',
     '/bloc': 'Bloc Demo',
-    '/animate': 'Animate Page',
+    '/isolate': 'Isolate Demo',
+    '/animate': 'Animation & Transitions',
     '/expanded': 'Expanded View',
     '/tab': 'Tab Page',
-    '/animate_scale': 'Animate Scale',
+    '/repaintboundary': 'RepaintBoundary Demo',
   };
 
   for (final path in paths) {
     testWidgets('opens $path from the study home and returns', (tester) async {
+      if (path == '/expanded') {
+        await tester.binding.setSurfaceSize(const Size(400, 800));
+        addTearDown(() => tester.binding.setSurfaceSize(null));
+      }
       final router = createRouter('/homePage');
       await tester.pumpWidget(MaterialApp.router(routerConfig: router));
       await tester.pump(const Duration(milliseconds: 400));
@@ -88,6 +98,16 @@ void main() {
       }
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 400));
+      if (path == '/expanded') {
+        expect(
+          tester.takeException(),
+          isA<FlutterError>().having(
+            (error) => error.toString(),
+            'message',
+            contains('A RenderFlex overflowed'),
+          ),
+        );
+      }
       expect(router.state.uri.path, path);
       expect(find.byType(ErrorWidget), findsNothing);
 

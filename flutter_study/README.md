@@ -42,7 +42,8 @@ flutter test -d <ios-device-id> integration_test/module/usecase/pages/platform/f
 - [基础组件](lib/module/usecase/pages/components/README.md)
 - [分隔线](lib/module/usecase/pages/separator/README.md)
 - [Key 与 BLoC](lib/module/usecase/pages/widget_keys/README.md)
-- [动画](lib/module/usecase/pages/animation/README.md)
+- [动画与页面转场](lib/module/usecase/pages/animation/README.md)
+- [RepaintBoundary 重绘隔离](lib/module/usecase/pages/repaintboundary/README.md)
 - [Expanded 布局](lib/module/usecase/pages/layout/README.md)
 - [Tab 页面](lib/module/usecase/pages/tabs/README.md)
 - [转场与手势返回](lib/module/usecase/pages/transition/README.md)
@@ -50,6 +51,12 @@ flutter test -d <ios-device-id> integration_test/module/usecase/pages/platform/f
 - [命中测试](lib/module/usecase/pages/hit_test/README.md)
 - [国际化](lib/module/usecase/pages/localization/README.md)
 - [平台互操作](lib/module/usecase/pages/platform/README.md)
+
+- [Cubit 与 Bloc](lib/module/usecase/pages/bloc/README.md)
+- [Isolate 实验](lib/module/usecase/pages/isolate/README.md)
+
+- [Riverpod 基础用法](lib/module/usecase/pages/riverprovider/README.md)
+- [本地存储对比](lib/module/usecase/pages/storage/README.md)
 
 ## 专题文档
 

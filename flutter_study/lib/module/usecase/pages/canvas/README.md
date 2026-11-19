@@ -21,3 +21,5 @@
 - [Flutter自定义绘制完全指南](docs/Flutter自定义绘制完全指南.md)
 - [Flutter自定义绘制深度解析-从原理到实战](docs/Flutter自定义绘制深度解析-从原理到实战.md)
 - [渐变文字使用指南](docs/渐变文字使用指南.md)
+
+[查看模拟器截图和动态 GIF](../../../../../../README.md#canvas-图形与动态绘制)

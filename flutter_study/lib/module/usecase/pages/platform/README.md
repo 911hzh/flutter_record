@@ -6,6 +6,7 @@
 
 ## 示例目录
 
+- [原生ViewController](../../../../../ios/Runner/EmbedFlutterInNative/NativeDemoViewController.md)
 - [Flutter 嵌入 iOS 原生视图](flutter_use_native/README.md)
 - [原生宿主中的 Flutter 页面](native_use_flutter/README.md)
 - [Pigeon 模拟调用](pigeon/README.md)

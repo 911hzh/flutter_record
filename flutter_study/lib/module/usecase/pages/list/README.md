@@ -7,3 +7,5 @@
 ## 代码
 
 - [ListItemPage.dart](ListItemPage.dart)
+
+- [CSDN 学习笔记：ListView.builder 和 KeepAlive](CSDN.md)
