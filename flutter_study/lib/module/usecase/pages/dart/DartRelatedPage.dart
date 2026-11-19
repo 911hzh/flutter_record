@@ -134,87 +134,145 @@ class _DartRelatedPageState extends State<DartRelatedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Dart 相关')),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text("Stream 相关")]),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              color: Colors.red,
+      appBar: AppBar(title: Text(widget.title)),
+      body: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 640),
               child: Column(
-                spacing: 10,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                spacing: 12,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [ElevatedButton(onPressed: sendMessage, child: Text('发送消息'))],
+                  Text(
+                    '运行实验，在调试控制台查看输出。',
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  ElevatedButton(onPressed: receiveMessage, child: Text('接收消息')),
-                  ElevatedButton(onPressed: receiveMultipleMessage, child: Text('接收多条消息')),
-                  ElevatedButton(
-                    onPressed: () {
-                      testStream.close();
-                    },
-                    child: Text('close stream'),
-                  ),
-                ],
-              ),
-            ),
-
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text("Future 相关")]),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              color: Colors.red,
-              child: Column(
-                spacing: 10,
-                children: [ElevatedButton(onPressed: futureMessage, child: Text('Future 消息'))],
-              ),
-            ),
-
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text("Isolate 相关")]),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              color: Colors.red,
-              child: Column(
-                spacing: 10,
-                children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      final date = DateTime.now();
-                      await IsolateTest().testSpawn();
-                      print("time duration: ${DateTime.now().difference(date).inMilliseconds}ms");
-                    },
-                    child: Text('Future 消息'),
-                  ),
-                ],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                print("class to string: ${ABA3().runtimeType.toString()}");
-              },
-              child: Container(
-                width: 20,
-                height: 30,
-                color: Colors.red,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "test1111111",
-                        style: TextStyle(fontSize: 10),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                  _experimentCard(
+                    context,
+                    icon: Icons.stream,
+                    title: 'Stream',
+                    description: '观察广播流中的单个监听者和多个监听者。',
+                    actions: [
+                      FilledButton.tonal(
+                        onPressed: testStream.isClosed ? null : receiveMessage,
+                        child: const Text('添加监听'),
                       ),
-                    ),
-                  ],
-                ),
+                      FilledButton.tonal(
+                        onPressed: testStream.isClosed
+                            ? null
+                            : receiveMultipleMessage,
+                        child: const Text('添加多个监听'),
+                      ),
+                      OutlinedButton(
+                        onPressed: testStream.isClosed ? null : sendMessage,
+                        child: const Text('发送消息'),
+                      ),
+                      TextButton(
+                        onPressed: testStream.isClosed
+                            ? null
+                            : () {
+                                setState(() {
+                                  testStream.close();
+                                });
+                              },
+                        child: Text(
+                          testStream.isClosed ? 'Stream 已关闭' : '关闭 Stream',
+                        ),
+                      ),
+                    ],
+                  ),
+                  _experimentCard(
+                    context,
+                    icon: Icons.hourglass_bottom,
+                    title: 'Future',
+                    description: '观察延迟任务以及多次 await 同一个 Future 的输出。',
+                    actions: [
+                      FilledButton.tonal(
+                        onPressed: futureMessage,
+                        child: const Text('运行 Future 实验'),
+                      ),
+                    ],
+                  ),
+                  _experimentCard(
+                    context,
+                    icon: Icons.memory,
+                    title: 'Isolate',
+                    description: '启动独立 Isolate，通过消息端口接收结果。',
+                    actions: [
+                      FilledButton.tonal(
+                        onPressed: () async {
+                          final date = DateTime.now();
+                          await IsolateTest().testSpawn();
+                          print(
+                            "time duration: ${DateTime.now().difference(date).inMilliseconds}ms",
+                          );
+                        },
+                        child: const Text('运行 Isolate 实验'),
+                      ),
+                    ],
+                  ),
+                  _experimentCard(
+                    context,
+                    icon: Icons.data_object,
+                    title: '运行时类型',
+                    description: '查看 ABA3 实例的 runtimeType。',
+                    actions: [
+                      FilledButton.tonal(
+                        onPressed: () {
+                          print("class to string: ${ABA3().runtimeType}");
+                        },
+                        child: const Text('打印类型'),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _experimentCard(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String description,
+    required List<Widget> actions,
+  }) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+
+    return Card.filled(
+      margin: EdgeInsets.zero,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 12,
+          children: [
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundColor: colors.primaryContainer,
+                  foregroundColor: colors.onPrimaryContainer,
+                  child: Icon(icon),
+                ),
+                const SizedBox(width: 12),
+                Expanded(child: Text(title, style: theme.textTheme.titleLarge)),
+              ],
+            ),
+            Text(
+              description,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: colors.onSurfaceVariant,
+              ),
+            ),
+            Wrap(spacing: 8, runSpacing: 4, children: actions),
           ],
         ),
       ),

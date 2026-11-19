@@ -1,10 +1,6 @@
-# 转场与手势返回
+# MindSpace 页面与卡片
 
-入口：/transition_home_page、/mindspace_home_page。
-
-打开详情，测试普通返回、拖动取消和完成返回。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+入口 `/mindspace_home_page` 打开 `MindSpaceHomePagetest`。选择转场版本进入 `MindSpaceHomePage`，再点卡片进入 `MindSpaceFocusDetailPage`。
 
 ## 代码
 

@@ -1,16 +1,14 @@
 # module 目录说明
 
-`module` 用于组织业务模块、demo 页面、依赖注册和路由配置。当前 example 工程主要在这里展示 `flutter_foundation_kit` 的使用方式，每个 demo 主题可以包含 Page、Cubit、VM 和局部 Widget。
+`module` 用于组织业务模块、demo 页面、依赖注册和路由配置。Flutter 学习示例按主题组织，页面专用状态和 Widget 与页面放在一起。
 
 ## 当前内容
 
-- `usecase/pages/home`：demo 首页和入口列表。
-- `usecase/pages/login`、`logout`：登录和退出登录示例。
-- `usecase/pages/apiImpl`：REST Client 调用示例。
-- `usecase/pages/store`、`userStore`、`settings`：Store 和设置能力示例。
-- `usecase/pages/logger`、`cutil`：日志和工具能力示例。
-- `getIt`：依赖注入和对象注册。
-- `route`：页面路由表和全局导航能力。
+- [`usecase/pages/home`](usecase/pages/home/README.md) 是学习首页和菜单。
+- `usecase/pages/` 包含布局、Canvas、状态管理、转场、国际化和平台互操作等示例。完整入口见[项目索引](../../README.md#演示与教程)。
+- [`getIt`](getIt/README.md) 管理依赖注入。
+- [`route`](route/README.md) 管理路由和导航。
+
 
 ## 使用约定
 

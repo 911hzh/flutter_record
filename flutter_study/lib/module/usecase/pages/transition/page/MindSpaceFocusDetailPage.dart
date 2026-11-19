@@ -10,11 +10,15 @@ class MindSpaceFocusDetailPage extends HookWidget {
   final GlobalKey fromGlobalKey;
   final Animation<double>? animation;
 
-  MindSpaceFocusDetailPage({required this.fromGlobalKey, required this.animation});
+  MindSpaceFocusDetailPage({
+    required this.fromGlobalKey,
+    required this.animation,
+  });
 
   (Offset, Size) getPosition() {
     // 通过 GlobalKey 获取组件的 RenderBox
-    final renderBox = fromGlobalKey.currentContext?.findRenderObject() as RenderBox?;
+    final renderBox =
+        fromGlobalKey.currentContext?.findRenderObject() as RenderBox?;
 
     // 获取组件的大小
     final size = renderBox?.size;
@@ -30,7 +34,9 @@ class MindSpaceFocusDetailPage extends HookWidget {
     final modalRoute = ModalRoute.of(context);
     final secondaryAnimation = modalRoute?.secondaryAnimation;
     final animation = modalRoute?.animation;
-    print("secondaryAnimation: ${secondaryAnimation?.isAnimating}, animation: ${animation?.isAnimating}");
+    print(
+      "secondaryAnimation: ${secondaryAnimation?.isAnimating}, animation: ${animation?.isAnimating}",
+    );
 
     final positionAndSize = useMemoized(() {
       return getPosition();
@@ -40,46 +46,68 @@ class MindSpaceFocusDetailPage extends HookWidget {
     });
     // animation：用于 DetailPage 的进入/退出动画
     final controller =
-        animation ?? AnimationController(duration: Duration(milliseconds: 300), vsync: useSingleTickerProvider());
+        animation ??
+        AnimationController(
+          duration: Duration(milliseconds: 300),
+          vsync: useSingleTickerProvider(),
+        );
     final iconAnimation = useAnimation<double>(
-      Tween<double>(
-        begin: 1,
-        end: 0,
-      ).animate(CurvedAnimation(parent: controller, curve: Interval(0.0, 0.8, curve: Curves.easeOut))),
+      Tween<double>(begin: 1, end: 0).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.0, 0.8, curve: Curves.easeOut),
+        ),
+      ),
     );
     final textAnimation = useAnimation<Offset>(
-      Tween<Offset>(
-        begin: Offset(16, 16),
-        end: Offset(40, 70),
-      ).animate(CurvedAnimation(parent: controller, curve: Interval(0.0, 0.8, curve: Curves.easeOut))),
+      Tween<Offset>(begin: Offset(16, 16), end: Offset(40, 70)).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.0, 0.8, curve: Curves.easeOut),
+        ),
+      ),
     );
     final containerAnimationPosition = useAnimation<Offset>(
-      Tween<Offset>(
-        begin: positionAndSize.$1,
-        end: Offset(8, 80),
-      ).animate(CurvedAnimation(parent: controller, curve: Interval(0.0, 0.8, curve: Curves.easeOut))),
+      Tween<Offset>(begin: positionAndSize.$1, end: Offset(8, 80)).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.0, 0.8, curve: Curves.easeOut),
+        ),
+      ),
     );
     final containerAnimationSize = useAnimation<Size>(
       Tween<Size>(
         begin: positionAndSize.$2,
         end: Size(screenSize.width - 16, screenSize.height - 16 - 120),
-      ).animate(CurvedAnimation(parent: controller, curve: Interval(0.0, 0.8, curve: Curves.easeOut))),
+      ).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.0, 0.8, curve: Curves.easeOut),
+        ),
+      ),
     );
     // 添加背景色动画，从完全透明渐变到半透明
     final backgroundAnimation = useAnimation<double>(
       Tween<double>(
         begin: 0, // 完全透明
         end: 1, // 半透明（原始值）
-      ).animate(CurvedAnimation(parent: controller, curve: Interval(0.4, 1.0, curve: Curves.easeInOut))),
+      ).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.4, 1.0, curve: Curves.easeInOut),
+        ),
+      ),
     );
 
     final buttonOpacityAnimation = useAnimation<double>(
-      Tween<double>(
-        begin: 0,
-        end: 1,
-      ).animate(CurvedAnimation(parent: controller, curve: Interval(0.0, 0.8, curve: Curves.easeOut))),
+      Tween<double>(begin: 0, end: 1).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.0, 0.8, curve: Curves.easeOut),
+        ),
+      ),
     );
-    final defaultIcon = Image.asset("lib/assets/focusItem_defaultIcon.png");
+    final defaultIcon = const Icon(Icons.spa_outlined);
 
     final bodyContent = Container(
       color: Colors.transparent,
@@ -96,7 +124,7 @@ class MindSpaceFocusDetailPage extends HookWidget {
               Positioned.fill(
                 child: Opacity(
                   opacity: backgroundAnimation,
-                  child: Image.asset("lib/assets/mindspace_bg.png", fit: BoxFit.cover),
+                  child: Container(color: Colors.white),
                 ),
               ),
               Positioned(
@@ -112,8 +140,17 @@ class MindSpaceFocusDetailPage extends HookWidget {
                       decoration: BoxDecoration(
                         color: Color(0x4DFFFFFF),
                         borderRadius: BorderRadius.circular(22),
-                        border: Border.all(color: const Color(0x26FFFFFF), width: 1),
-                        boxShadow: [const BoxShadow(offset: Offset(0, 8), blurRadius: 24, color: Color(0x0D000000))],
+                        border: Border.all(
+                          color: const Color(0x26FFFFFF),
+                          width: 1,
+                        ),
+                        boxShadow: [
+                          const BoxShadow(
+                            offset: Offset(0, 8),
+                            blurRadius: 24,
+                            color: Color(0x0D000000),
+                          ),
+                        ],
                       ),
                       child: Stack(
                         children: [
@@ -159,7 +196,9 @@ class MindSpaceFocusDetailPage extends HookWidget {
                               height: 26,
                               decoration: ShapeDecoration(
                                 color: const Color(0xFFD9D9D9),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
                               ),
                             ),
                           ),
@@ -176,26 +215,47 @@ class MindSpaceFocusDetailPage extends HookWidget {
                 child: AnimatedBuilder(
                   animation: animation!,
                   builder: (context, child) {
-                    return Opacity(opacity: buttonOpacityAnimation, child: child!);
+                    return Opacity(
+                      opacity: buttonOpacityAnimation,
+                      child: child!,
+                    );
                   },
                   child: GestureDetector(
                     onTap: () {
                       final route = CustomBackGesturePageRoute(
                         title: "MindSpaceHomePage",
                         builder: (context) => MindSpaceHomePage(),
-                        delegatedTransitionBuilder: (context, animation, secondaryAnimation, allowSnapshotting, child) {
-                          final route = ModalRoute.of(context);
-                          print("route delegatedTransitionBuilder: ${route.toString()}");
-                          return ScaleTransition(
-                            scale: Tween<double>(begin: 1.0, end: 0.9).animate(secondaryAnimation),
-                            child: child,
-                          );
-                        },
-                        builderTransitionContent: (context, animation, secondaryAnimation, child) {
-                          final route = ModalRoute.of(context);
-                          print("route builderTransitionContent: ${route.toString()}");
-                          return ScaleTransition(scale: animation, child: MindSpaceHomePage());
-                        },
+                        delegatedTransitionBuilder:
+                            (
+                              context,
+                              animation,
+                              secondaryAnimation,
+                              allowSnapshotting,
+                              child,
+                            ) {
+                              final route = ModalRoute.of(context);
+                              print(
+                                "route delegatedTransitionBuilder: ${route.toString()}",
+                              );
+                              return ScaleTransition(
+                                scale: Tween<double>(
+                                  begin: 1.0,
+                                  end: 0.9,
+                                ).animate(secondaryAnimation),
+                                child: child,
+                              );
+                            },
+                        builderTransitionContent:
+                            (context, animation, secondaryAnimation, child) {
+                              final route = ModalRoute.of(context);
+                              print(
+                                "route builderTransitionContent: ${route.toString()}",
+                              );
+                              return ScaleTransition(
+                                scale: animation,
+                                child: MindSpaceHomePage(),
+                              );
+                            },
                       );
                       Navigator.of(context).push(route);
                     },
@@ -226,20 +286,22 @@ class MindSpaceFocusDetailPage extends HookWidget {
 
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body:
-          secondaryAnimation != null
-              ? AnimatedBuilder(
-                animation: secondaryAnimation,
-                builder: (context, child) {
-                  // 当被其他页面覆盖时（如跳转到新 HomePage），执行淡出动画
-                  return FadeTransition(
-                    opacity: Tween<double>(begin: 1, end: 0).animate(secondaryAnimation),
-                    child: child,
-                  );
-                },
-                child: bodyContent,
-              )
-              : bodyContent,
+      body: secondaryAnimation != null
+          ? AnimatedBuilder(
+              animation: secondaryAnimation,
+              builder: (context, child) {
+                // 当被其他页面覆盖时（如跳转到新 HomePage），执行淡出动画
+                return FadeTransition(
+                  opacity: Tween<double>(
+                    begin: 1,
+                    end: 0,
+                  ).animate(secondaryAnimation),
+                  child: child,
+                );
+              },
+              child: bodyContent,
+            )
+          : bodyContent,
     );
   }
 }

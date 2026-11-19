@@ -1,9 +1,0 @@
-String naming(dynamic object) {
-  if (object is String) {
-    return object;
-  }
-  if (object is Type) {
-    return (object).toString().replaceAll(RegExp(r"<.*>"), "");
-  }
-  return object.runtimeType.toString().replaceAll(RegExp(r"<.*>"), "");
-}

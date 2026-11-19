@@ -16,6 +16,7 @@
 		63358B932EC3325600BB4F8A /* PlatformViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63358B902EC3325600BB4F8A /* PlatformViewRegister.swift */; };
 		63358B942EC3325600BB4F8A /* IOSNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63358B8C2EC3325600BB4F8A /* IOSNativeView.swift */; };
 		63358B952EC3325600BB4F8A /* FlutterWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63358B892EC3325600BB4F8A /* FlutterWidgetVC.swift */; };
+		A10000000000000000000008 /* NativeDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000009 /* NativeDemoViewController.swift */; };
 		63358B962EC3325600BB4F8A /* IOSNativeViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63358B8D2EC3325600BB4F8A /* IOSNativeViewFactory.swift */; };
 		63358B992EC46B4C00BB4F8A /* FlutterEventMethodChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63358B982EC46B4C00BB4F8A /* FlutterEventMethodChannel.swift */; };
 		63A921472FC931700022925E /* LocationMsg.g.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A921432FC931700022925E /* LocationMsg.g.swift */; };
@@ -71,6 +72,7 @@
 		421E6FE5C6F595B1EADF2165 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		54BD79FF8287AB130AA913FF /* Runner/zHNativeChannel/msgs/LocationMsg.g.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner/zHNativeChannel/msgs/LocationMsg.g.swift; sourceTree = SOURCE_ROOT; };
 		63358B892EC3325600BB4F8A /* FlutterWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterWidgetVC.swift; sourceTree = "<group>"; };
+		A10000000000000000000009 /* NativeDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeDemoViewController.swift; sourceTree = "<group>"; };
 		63358B8A2EC3325600BB4F8A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63358B8C2EC3325600BB4F8A /* IOSNativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSNativeView.swift; sourceTree = "<group>"; };
 		63358B8D2EC3325600BB4F8A /* IOSNativeViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSNativeViewFactory.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				63358B892EC3325600BB4F8A /* FlutterWidgetVC.swift */,
+				A10000000000000000000009 /* NativeDemoViewController.swift */,
 				63358B8A2EC3325600BB4F8A /* README.md */,
 			);
 			path = EmbedFlutterInNative;
@@ -500,6 +503,7 @@
 				63358B942EC3325600BB4F8A /* IOSNativeView.swift in Sources */,
 				A10000000000000000000001 /* LocationPigeon.g.swift in Sources */,
 				63358B952EC3325600BB4F8A /* FlutterWidgetVC.swift in Sources */,
+				A10000000000000000000008 /* NativeDemoViewController.swift in Sources */,
 				63358B962EC3325600BB4F8A /* IOSNativeViewFactory.swift in Sources */,
 				A10000000000000000000002 /* LocationPigeonHostApiImpl.swift in Sources */,
 				63A921472FC931700022925E /* LocationMsg.g.swift in Sources */,

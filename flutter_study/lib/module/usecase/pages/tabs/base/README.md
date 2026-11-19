@@ -1,10 +1,6 @@
-# Tab 页面
+# Tab 数据模型
 
-入口：/tab。
-
-切换标签，检查内容与选中状态。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+[ScrollItemData.dart](ScrollItemData.dart) 是 `/tab` 示例使用的滚动条目数据。进入页面和切换标签的方式见 [Tab 页面](../README.md)。
 
 ## 代码
 

@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_study/infra/platform/channel/MethodChannelManager.dart';
 
 class HomePage extends HookWidget {
   HomePage();
@@ -70,33 +72,52 @@ class HomePage extends HookWidget {
     return gradients[index % gradients.length];
   }
 
+  Future<void> _openNativeViewController(BuildContext context) async {
+    try {
+      await MethodChannelManager.shared.invokeMethod(
+        'openNativeViewController',
+      );
+    } on PlatformException {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('无法打开原生页面')));
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     ValueNotifier<List<Map<String, String>>> datas = useState([
+      {"name": "Animation & Transitions", "path": "/animate"},
+      {"name": "Riverpod Basics", "path": "/riverprovider"},
+      {"name": "Local Storage", "path": "/storage"},
+      if (!kIsWeb && defaultTargetPlatform == TargetPlatform.iOS)
+        {"name": "Native ViewController"},
       {"name": "Flutter Localization", "path": "/localization"},
       {"name": "List Item Page", "path": "/list_item_page"},
       {"name": "Hitest Page", "path": "/hitest_page"},
-      {"name": "Dart 相关", "path": "/dart_related"},
-      {"name": "Provider 测试", "path": "/provider"},
-      {"name": "Navigator 2.0 示例", "path": "/navigator_demo"},
-      {"name": "InheritedWidget 数据共享", "path": "/inherited_widget_index"},
-      {"name": "主题共享示例", "path": "/theme_share_example"},
-      {"name": "iOS 原生组件", "path": "/native_test_page"},
+      {"name": "Dart Basics", "path": "/dart_related"},
+      {"name": "Provider Demo", "path": "/provider"},
+      {"name": "Navigator 2.0 Demo", "path": "/navigator_demo"},
+      {"name": "InheritedWidget Demo", "path": "/inherited_widget_index"},
+      {"name": "Theme Sharing", "path": "/theme_share_example"},
+      {"name": "iOS Native Components", "path": "/native_test_page"},
       {"name": "ZHNativeChannel Demo", "path": "/zh_native_channel_demo"},
       {"name": "Pigeon Demo", "path": "/pigeon_demo"},
       {"name": "Canvas Page", "path": "/canvas_page"},
-      {"name": "Canvas 实用案例", "path": "/practical_examples"},
+      {"name": "Canvas Examples", "path": "/practical_examples"},
       {"name": "Mindspace Home", "path": "/mindspace_home_page"},
       {"name": "Transition Home", "path": "/transition_home_page"},
       {"name": "Base Component", "path": "/base_component"},
       {"name": "Separator Page", "path": "/separator_page"},
       {"name": "Key Page", "path": "/key_page"},
       {"name": "Bloc Demo", "path": "/bloc"},
+      {"name": "Isolate Demo", "path": "/isolate"},
       {"name": "SVG Page", "path": "/svg_page"},
-      {"name": "Animate Page", "path": "/animate"},
       {"name": "Expanded View", "path": "/expanded"},
       {"name": "Tab Page", "path": "/tab"},
-      {"name": "Animate Scale", "path": "/animate_scale"},
+      {"name": "RepaintBoundary Demo", "path": "/repaintboundary"},
     ]);
 
     return Scaffold(
@@ -132,10 +153,9 @@ class HomePage extends HookWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {
-                    print("item: ${item["path"]}");
-                    context.push(item["path"]!);
-                  },
+                  onTap: item["path"] == null
+                      ? () => _openNativeViewController(context)
+                      : () => context.push(item["path"]!),
                   borderRadius: BorderRadius.circular(16),
                   child: Ink(
                     decoration: BoxDecoration(

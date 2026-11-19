@@ -1,15 +1,19 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
+import 'package:flutter_study/module/usecase/pages/riverprovider/RiverProviderPage.dart';
+import 'package:flutter_study/module/usecase/pages/storage/StoragePage.dart';
+import 'package:flutter_study/module/usecase/pages/isolate/IsolatePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_study/Properties.dart';
 import 'package:flutter_study/module/usecase/pages/platform/flutter_use_native/IOSNativeComponentDemoPage.dart';
 import 'package:flutter_study/module/usecase/pages/platform/native_use_flutter/NativeUseFlutterPage.dart';
 import 'package:flutter_study/module/usecase/pages/animation/AnimatePage.dart';
-import 'package:flutter_study/module/usecase/pages/animation/AnimateScalePage.dart';
+import 'package:flutter_study/module/usecase/pages/repaintboundary/RepaintBoundaryPage.dart';
 import 'package:flutter_study/module/usecase/pages/components/BaseComponentPage.dart';
 import 'package:flutter_study/module/usecase/pages/transition/custom/HTPageJump/TransitionHomePage.dart';
-import 'package:flutter_study/module/usecase/pages/layout/ExpandedView.dart';
+import 'package:flutter_study/module/usecase/pages/layout/ExpandedPage.dart';
 import 'package:flutter_study/module/usecase/pages/home/HomePage.dart';
-import 'package:flutter_study/module/usecase/pages/widget_keys/BlocBuilderPage.dart';
+import 'package:flutter_study/module/usecase/pages/bloc/BlocBuilderPage.dart';
 import 'package:flutter_study/module/usecase/pages/widget_keys/KeyPage.dart';
 import 'package:flutter_study/module/usecase/pages/list/ListItemPage.dart';
 import 'package:flutter_study/module/usecase/pages/localization/LocalizationPage.dart';
@@ -35,6 +39,13 @@ GoRouter createRouter(String initialLocation) => GoRouter(
   // 如果需要指定初始页面，可以取消下面的注释
   initialLocation: initialLocation,
   routes: [
+    GoRoute(
+      path: '/riverprovider',
+      builder: (context, state) =>
+          const riverpod.ProviderScope(child: RiverProviderPage()),
+    ),
+    GoRoute(path: '/storage', builder: (context, state) => const StoragePage()),
+    GoRoute(path: '/isolate', builder: (context, state) => const IsolatePage()),
     GoRoute(
       path: "/list_item_page",
       builder: (context, state) {
@@ -105,7 +116,7 @@ GoRouter createRouter(String initialLocation) => GoRouter(
     GoRoute(
       path: "/expanded",
       builder: (context, state) {
-        return ExpandedView();
+        return ExpandedPage();
       },
     ),
     GoRoute(
@@ -115,9 +126,9 @@ GoRouter createRouter(String initialLocation) => GoRouter(
       },
     ),
     GoRoute(
-      path: "/animate_scale",
+      path: "/repaintboundary",
       builder: (context, state) {
-        return AnimateScalePage();
+        return RepaintBoundaryPage();
       },
     ),
     GoRoute(

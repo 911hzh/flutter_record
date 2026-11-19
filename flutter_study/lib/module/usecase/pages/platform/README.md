@@ -4,7 +4,13 @@
 
 在各自支持的平台验证原生视图、嵌入、Pigeon 和 Native Channel。
 
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+## 示例目录
+
+- [原生ViewController](../../../../../ios/Runner/EmbedFlutterInNative/NativeDemoViewController.md)
+- [Flutter 嵌入 iOS 原生视图](flutter_use_native/README.md)
+- [原生宿主中的 Flutter 页面](native_use_flutter/README.md)
+- [Pigeon 模拟调用](pigeon/README.md)
+- [ZHNativeChannel 消息往返](native_channel/README.md)
 
 ## 教程
 

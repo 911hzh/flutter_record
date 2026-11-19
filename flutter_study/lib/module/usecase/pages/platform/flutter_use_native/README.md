@@ -6,14 +6,15 @@
 
 ## 🗂 文件说明
 
-- **NativeTestPage.dart** - Flutter 页面，展示如何使用原生组件
-- **NativeTestView.dart** - Platform View 桥接组件，连接 Flutter 和原生视图
+- [`IOSNativeComponentDemoPage.dart`](IOSNativeComponentDemoPage.dart) - Flutter 页面，展示如何使用原生组件
+- [`IOSNativeUIKitView.dart`](IOSNativeUIKitView.dart) - Platform View 桥接组件，连接 Flutter 和原生视图
+- [`IOSNativeGestureOverlapTestPage.dart`](IOSNativeGestureOverlapTestPage.dart) 是重叠手势验证页，从主示例点按钮进入。
 
 ## 🔗 对应的 iOS 原生文件
 
-iOS 原生实现位于：`ios/Runner/platform-views/`
-- **NativeTestView.swift** - 原生 UIView 实现
-- **NativeTestViewFactory.swift** - 视图工厂和注册管理
+iOS 原生实现位于：`ios/Runner/EmbedNativeInFlutter/`
+- **IOSNativeView.swift** - 原生 UIView 实现
+- **IOSNativeViewFactory.swift** - 视图工厂和注册管理
 
 ## 🚀 使用方法
 
@@ -22,7 +23,7 @@ iOS 原生实现位于：`ios/Runner/platform-views/`
 ```dart
 GoRoute(
   path: "/native_test_page",
-  builder: (context, state) => NativeTestPage(),
+  builder: (context, state) => const IOSNativeComponentDemoPage(),
 ),
 ```
 
@@ -32,7 +33,7 @@ GoRoute(
 Container(
   width: 300,
   height: 200,
-  child: NativeTestView(),  // 使用原生视图
+  child: const IOSNativeUIKitView(),  // 使用原生视图
 )
 ```
 
@@ -104,7 +105,7 @@ init(frame: CGRect, viewId: Int64, args: Any?) {
 ### Step 1: 创建 Flutter 桥接组件
 
 ```dart
-// lib/examples/flutter_use_native/MyCustomView.dart
+// lib/module/usecase/pages/platform/flutter_use_native/MyCustomView.dart
 class MyCustomView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -120,7 +121,7 @@ class MyCustomView extends StatelessWidget {
 ### Step 2: 创建 iOS 原生视图
 
 ```swift
-// ios/Runner/platform-views/MyCustomView.swift
+// ios/Runner/EmbedNativeInFlutter/MyCustomView.swift
 class MyCustomView: NSObject, FlutterPlatformView {
     private var _view: UIView
     
@@ -139,7 +140,7 @@ class MyCustomView: NSObject, FlutterPlatformView {
 ### Step 3: 创建工厂并注册
 
 ```swift
-// ios/Runner/platform-views/MyCustomViewFactory.swift
+// ios/Runner/EmbedNativeInFlutter/MyCustomViewFactory.swift
 class MyCustomViewFactory: NSObject, FlutterPlatformViewFactory {
     func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> FlutterPlatformView {
         return MyCustomView(frame: frame, viewId: viewId, args: args)

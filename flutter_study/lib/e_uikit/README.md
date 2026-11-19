@@ -1,6 +1,6 @@
 # e_uikit 目录说明
 
-`e_uikit` 用于放置多个模块共享的 UI 组件和视觉基础设施。当前目录暂时为空，后续可以用于沉淀通用 Widget、样式封装、弹窗、列表项、按钮等可复用展示组件。
+`e_uikit` 存放可复用的 UI 组件。[LocalizationNotifier.dart](localization/LocalizationNotifier.dart) 提供 JSON 本地化状态、`context.tr()` 和 `LocalizationBuilder`，供国际化页面使用。
 
 ## 适合放置的内容
 

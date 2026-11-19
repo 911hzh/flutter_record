@@ -1,10 +1,6 @@
-# 平台互操作
+# 原生宿主中的 Flutter 页面
 
-入口：/native_test_page、/native_use_flutter_page、/pigeon_demo、/zh_native_channel_demo。
-
-在各自支持的平台验证原生视图、嵌入、Pigeon 和 Native Channel。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+入口为 `/native_use_flutter_page`，由 iOS 的 `FlutterWidgetVC` 传入。页面监听 `FlutterNativeEventChannelBridge`，并演示通过 `FlutterNativeBridge` 调用宿主。在 iOS 的 Flutter 首页点击「原生ViewController」打开原生页面，再点击「打开 Flutter 页面」进入此页。原生页面上的「向 Flutter 获取数据」按钮通过 MethodChannel 向首页所在的 Flutter 引擎请求数据，并弹窗显示结果。
 
 ## 代码
 

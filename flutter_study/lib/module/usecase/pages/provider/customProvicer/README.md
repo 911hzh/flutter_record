@@ -1,10 +1,6 @@
-# Provider
+# 自定义 Provider 实验
 
-入口：/provider。
-
-执行状态操作，观察订阅组件更新。
-
-从工程根目录运行 `flutter run`。平台演示需要使用对应的平台环境。
+[MyProvider.dart](MyProvider.dart) 保存独立的自定义 Provider 实验。实际注册的 `/provider` 对应上一级的 [ProviderTestPage.dart](../ProviderTestPage.dart)。
 
 ## 代码
 
