@@ -10,21 +10,24 @@ class MindSpaceHomePage extends HookWidget {
   void gotoDetail(GlobalKey key, BuildContext context) {
     final route = CustomBackGesturePageRoute(
       title: "MindSpaceFocusDetailPage",
-      builder: (context) => MindSpaceFocusDetailPage(fromGlobalKey: key, animation: null),
+      builder: (context) =>
+          MindSpaceFocusDetailPage(fromGlobalKey: key, animation: null),
       // 📌 delegatedTransitionBuilder:
       // 返回 child，让 HomePage 通过自己内部的 secondaryAnimation 处理被覆盖动画
       // 不要创建新实例，否则会破坏 Widget 树导致手势返回失效
-      delegatedTransitionBuilder: (context, animation, secondaryAnimation, allowSnapshotting, child) {
-        return child; // ✅ 保持 Widget 树稳定，手势返回有效
-      },
+      delegatedTransitionBuilder:
+          (context, animation, secondaryAnimation, allowSnapshotting, child) {
+            return child; // ✅ 保持 Widget 树稳定，手势返回有效
+          },
       // 📌 builderTransitionContent:
       // 使用 animation 控制 DetailPage 的进入/退出动画
-      builderTransitionContent: (context, animation, secondaryAnimation, child) {
-        return MindSpaceFocusDetailPage(
-          fromGlobalKey: key,
-          animation: animation, // 🎯 传递 animation 给 DetailPage 做自定义动画
-        );
-      },
+      builderTransitionContent:
+          (context, animation, secondaryAnimation, child) {
+            return MindSpaceFocusDetailPage(
+              fromGlobalKey: key,
+              animation: animation, // 🎯 传递 animation 给 DetailPage 做自定义动画
+            );
+          },
     );
     final route1 = PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
@@ -75,14 +78,22 @@ class MindSpaceHomePage extends HookWidget {
                         onTap: () {
                           gotoDetail(globalKey, context);
                         },
-                        child: Container(width: itemWidth, height: itemHeight, child: FocusItemView()),
+                        child: Container(
+                          width: itemWidth,
+                          height: itemHeight,
+                          child: FocusItemView(),
+                        ),
                       ),
                       GestureDetector(
                         key: globalKey2,
                         onTap: () {
                           gotoDetail(globalKey2, context);
                         },
-                        child: Container(width: itemWidth, height: itemHeight, child: FocusItemView()),
+                        child: Container(
+                          width: itemWidth,
+                          height: itemHeight,
+                          child: FocusItemView(),
+                        ),
                       ),
                     ],
                   ),
@@ -101,13 +112,16 @@ class MindSpaceHomePage extends HookWidget {
     final container = Visibility(
       visible: false,
       maintainState: true,
-      child: Opacity(opacity: 0.5, child: Container(color: Colors.red, width: 100, height: 100)),
+      child: Opacity(
+        opacity: 0.5,
+        child: Container(color: Colors.red, width: 100, height: 100),
+      ),
     );
 
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(child: Image.asset("lib/assets/mindspace_bg.png", fit: BoxFit.cover)),
+          Positioned.fill(child: Container(color: Colors.white)),
           Positioned(
             bottom: 60,
             left: 0,
@@ -120,9 +134,15 @@ class MindSpaceHomePage extends HookWidget {
                       // - 当 DetailPage push 上来时：0 → 1（缩小到 0.2，淡出到 0）
                       // - 当 DetailPage pop 下去时：1 → 0（放大回 1，淡入回 1）
                       return ScaleTransition(
-                        scale: Tween<double>(begin: 1, end: 0.2).animate(secondaryAnimation),
+                        scale: Tween<double>(
+                          begin: 1,
+                          end: 0.2,
+                        ).animate(secondaryAnimation),
                         child: FadeTransition(
-                          opacity: Tween<double>(begin: 1, end: 0).animate(secondaryAnimation),
+                          opacity: Tween<double>(
+                            begin: 1,
+                            end: 0,
+                          ).animate(secondaryAnimation),
                           child: child,
                         ),
                       );

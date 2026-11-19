@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/flex.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class AnimateScalePage extends HookWidget {
-  AnimateScalePage();
+class RepaintBoundaryPage extends HookWidget {
+  RepaintBoundaryPage();
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class AnimateScalePage extends HookWidget {
     final animation = Tween<double>(begin: 1, end: 0.2).animate(controller);
     final data = useState(0);
     return Scaffold(
-      appBar: AppBar(title: Text("AnimateScalePage")),
+      appBar: AppBar(title: Text("RepaintBoundaryPage")),
       body: Container(
         color: Colors.white,
         child: Column(
@@ -32,13 +32,14 @@ class AnimateScalePage extends HookWidget {
                 padding: EdgeInsets.all(20),
                 child: Container(
                   color: Colors.blue,
-                  child: Text("AnimateScalePage"),
+                  child: Text("RepaintBoundaryPage"),
                 ),
               ),
             ),
             RepaintBoundary(
-              child: ColumnT(children: [Text("AnimateScalePage")]),
+              child: ColumnT(children: [Text("RepaintBoundaryPage")]),
             ),
+            // ColumnT(children: [Text("RepaintBoundaryPage")]),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -51,17 +52,14 @@ class AnimateScalePage extends HookWidget {
                         width: 200 * animation.value,
                         height: 200 * animation.value,
                         color: Colors.red,
-                        child: Center(child: Text("AnimateScalePage")),
+                        child: child,
                       );
                     },
-                    child: FadeTransition(
-                      opacity: animation,
-                      child: Container(
-                        width: 200,
-                        height: 200,
-                        color: Colors.red,
-                        child: Center(child: Text("AnimateScalePage")),
-                      ),
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      color: Colors.red,
+                      child: Center(child: Text("RepaintBoundaryPage")),
                     ),
                   ),
                 ),

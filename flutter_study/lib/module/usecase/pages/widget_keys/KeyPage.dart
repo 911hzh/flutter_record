@@ -1,112 +1,78 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import "package:flutter/src/widgets/framework.dart";
 import 'package:flutter_study/module/usecase/pages/widget_keys/ColorView.dart';
-import "package:flutter_hooks/flutter_hooks.dart";
 
-class KeyPage extends HookWidget {
-  KeyPage();
+class KeyPage extends StatefulWidget {
+  const KeyPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: _AppBarView(title: "key page"), body: PositionView());
+  State<KeyPage> createState() => _KeyPageState();
+}
+
+class _KeyPageState extends State<KeyPage> {
+  List<Widget> _unkeyedItems = [
+    ColorStateFullView(id: 0),
+    ColorStateFullView(id: 1),
+  ];
+  List<Widget> _keyedItems = [
+    ColorStateFullView(key: ValueKey(0), id: 0),
+    ColorStateFullView(key: ValueKey(1), id: 1),
+  ];
+  int _rebuilds = 0;
+
+  void _swapItems() {
+    setState(() {
+      _unkeyedItems = [_unkeyedItems[1], _unkeyedItems[0]];
+      _keyedItems = [_keyedItems[1], _keyedItems[0]];
+    });
   }
-}
 
-class _AppBarView extends AppBar {
-  _AppBarView({Key? key, required String title, VoidCallback? onBack})
-    : super(
-        key: key,
-        leading: IconButton(icon: const Icon(Icons.arrow_back, size: 28), onPressed: onBack),
-        title: Text(title),
-      );
-}
-
-class A {
-  final name;
-  final age;
-
-  A({required this.name, required this.age});
-}
-
-class PositionView extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    // var colorItems = useState([
-    //   ColorStateFullView(
-    //     key: const ValueKey("a"),
-    //   ),
-    //   ColorStateFullView(
-    //     key: const ValueKey("b"),
-    //   )
-    // ]);
+    return Scaffold(
+      appBar: AppBar(title: const Text('Key Page')),
+      body: _buildBody(),
+    );
+  }
 
-    // var colorItems = useState([
-    //   ColorStateFullView(
-    //     key: UniqueKey(),
-    //   ),
-    //   ColorStateFullView(
-    //     key: UniqueKey(),
-    //   )
-    // ]);
-
-    var colorItems = useState([
-      ColorStateLessView(color: UniqueColorGenerator.getColor()),
-      ColorStateLessView(color: UniqueColorGenerator.getColor()),
-    ]);
-    // var c = ObjectKey(const ["a", "b"]);
-    // print("a==c ${a == c}");
-    return Column(
+  Widget _buildBody() {
+    return ListView(
+      padding: const EdgeInsets.all(16),
       children: [
-        Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 20), child: Wrap(children: [...colorItems.value])),
-        FloatingActionButton(
-          onPressed: () {
-            var colors = colorItems.value;
-            colors = colors.reversed.toList();
-            colorItems.value = colors;
-          },
-          child: const Text("switch"),
+        const Text('先分别点两组的 A，再交换顺序。对比计数和颜色跟着位置走，还是跟着项目走。'),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            FilledButton(onPressed: _swapItems, child: const Text('交换顺序')),
+            OutlinedButton(
+              onPressed: () => setState(() => _rebuilds++),
+              child: Text('普通重建（${_rebuilds}）'),
+            ),
+          ],
         ),
-        FloatingActionButton(
-          onPressed: () {
-            var colors = colorItems.value;
-            // colors.add(ColorStateFullView(
-            //   key: UniqueKey(),
-            // ));
-            colorItems.value = [...colors];
-          },
-          child: const Text("add"),
-          heroTag: "add",
-        ),
-        FloatingActionButton(
-          onPressed: () {
-            var colors = colorItems.value;
-            colors.removeAt(0);
-            colorItems.value = [...colors];
-          },
-          child: const Text("remove first"),
-          heroTag: "remove first",
-        ),
-        FloatingActionButton(
-          onPressed: () {
-            var colors = colorItems.value;
-            colors.removeLast();
-            colorItems.value = [...colors];
-          },
-          child: const Text("remove last"),
-          heroTag: "remove last",
-        ),
+        const SizedBox(height: 16),
+        _buildCard('无 Key', _unkeyedItems),
+        const SizedBox(height: 12),
+        _buildCard('稳定 ValueKey', _keyedItems),
       ],
     );
-    // TODO: implement build
   }
-}
 
-class UniqueColorGenerator {
-  static Random random = new Random();
-
-  static Color getColor() {
-    return Color.fromARGB(255, random.nextInt(255), random.nextInt(255), random.nextInt(255));
+  Widget _buildCard(String title, List<Widget> items) {
+    return Card.filled(
+      margin: EdgeInsets.zero,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 8,
+          children: [
+            Text(title, style: Theme.of(context).textTheme.titleLarge),
+            Wrap(spacing: 8, runSpacing: 8, children: items),
+          ],
+        ),
+      ),
+    );
   }
 }

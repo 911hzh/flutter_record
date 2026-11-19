@@ -1,3 +1,5 @@
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_study/module/usecase/pages/storage/model/StorageRecordAdapter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_study/App.dart';
 import 'package:flutter_study/module/getIt/Injection.dart';
@@ -12,6 +14,10 @@ Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
+  await Hive.initFlutter();
+  if (!Hive.isAdapterRegistered(1)) {
+    Hive.registerAdapter(StorageRecordAdapter());
+  }
   initializeGeneratedChannels();
   // usePathUrlStrategy();
   runApp(const MyApp());

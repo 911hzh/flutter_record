@@ -38,6 +38,7 @@
 3. 如果有状态或交互逻辑，创建对应 `Cubit` 或 VM。
 4. 在 `lib/module/route/RouteConfig.dart` 注册路由。
 5. 如果首页需要入口，同步更新首页入口列表。
+6. 新增 Flutter 或原生示例页面时，在页面源码旁补一份 Markdown 说明，写清入口、演示功能和验证方式，并在所属主题的 `README.md` 添加链接。页面有独立目录时，说明可使用该目录的 `README.md`。
 
 推荐结构：
 
@@ -45,6 +46,7 @@
 lib/module/usecase/pages/example/
   ExamplePage.dart
   ExampleCubit.dart
+  README.md
 ```
 
 ### 新增第三方 SDK 能力
@@ -123,6 +125,7 @@ lib/e_uikit/loading/
 完成修改后检查：
 
 - 新页面是否注册路由。
+- 新示例页面是否有 Markdown 说明，所属主题是否有文档链接。
 - 新依赖是否完成 GetIt 或 injectable 注册。
 - 模块是否只依赖 Port，而不是直接依赖 Infra 或第三方 SDK。
 - 第三方 SDK 类型是否没有泄漏到 Page、Cubit、VM。

@@ -16,7 +16,7 @@ class FocusItemView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final defaultIcon = Image.asset("lib/assets/focusItem_defaultIcon.png");
+    final defaultIcon = const Icon(Icons.spa_outlined);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(22),
